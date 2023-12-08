@@ -49,5 +49,12 @@ pipeline {
 		     sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
 		}
 	}
+  stage ('Deploy-To-Tomcat') {
+        steps {
+        sshagent(['solar']) {
+                sh 'scp -o StrictHostKeyChecking=no target/*.jar solar@10.0.0.112:/opt/tomcat/webapps/'
+              }     
+           }      
+    }
   }
 }
