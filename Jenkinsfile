@@ -69,5 +69,12 @@ pipeline {
                 }
             }
         }
+        stage ('Port Scan') {
+		    steps {
+			sh 'rm nmap* || true'
+			sh 'docker run --rm -v "$(pwd)":/data uzyexe/nmap -sS -sV -oX nmap 10.0.0.112'
+			sh 'cat nmap'
+		    }
+	    }
   }
 }
