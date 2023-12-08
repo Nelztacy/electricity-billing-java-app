@@ -56,5 +56,18 @@ pipeline {
               }     
            }      
     }
+    stage('Copy JAR to Tomcat') {
+        steps {
+                script {
+                    def remoteHost = '10.0.0.112'
+                    def remoteUser = 'solar'
+                    def remoteDir = '/opt/tomcat/webapps/'
+                    def jarFileName = '*.jar'
+                    def localFilePath = "/var/lib/jenkins/workspace/electricity-billing-system/target/${jarFileName}"
+                    
+                    sh "scp ${localFilePath} ${remoteUser}@${remoteHost}:${remoteDir}"
+                }
+            }
+        }
   }
 }
