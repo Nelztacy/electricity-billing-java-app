@@ -1,4 +1,4 @@
-# Electricity Billing System "by the Olowo for the Olowo"
+# Electricity Billing System "by Technelogics"
 This is a GUI made using Java Swing.
 It lets User perform multiple operations like:-
 
