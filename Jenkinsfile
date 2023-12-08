@@ -24,5 +24,16 @@ pipeline {
 		       }
 		}
 	}
+  stage('Build Artifact') {
+        steps {
+            sh "mvn clean package"
+                }
+                post{
+                success{
+                    echo "Archiving the Artifacts"
+                    archiveArtifacts artifacts: "**/target/*.jar"
+                }
+            }
+    }
   }
 }
